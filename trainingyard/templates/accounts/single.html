@@ -1,0 +1,211 @@
+{% extends 'accounts/base.html'%}
+{% block content %}
+{% load static %}
+<hr>
+	<!-- single page -->
+	<div class="single-page ">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<h3 class="w3ls-title">Course <span>Details</span></h3>
+			</div>
+			<hr>
+			<div class="inner-sec">
+				<div class="row">
+					{% for data in course_details_qs %}
+					<div class="col-lg-8 left-blog-info text-left">
+						<div class="blog-grid-top">
+							<div class="b-grid-top">
+								<div class="blog_info_left_grid">
+									<a href="single.html">
+										<img src="/{{data.image}}" class="img-fluid" alt="">
+									</a>
+								</div>
+							</div>
+
+							<h3>
+								{{data.name}}
+							</h3><br>
+							<p style="float:left;">Trainer: <span style="color:#000">{{seller_qs.name}}</span></p>
+							<p style="float:right;">Level: <span style="color:#000">{{data.level}}</span></p><br><hr><br>
+							<p>{{data.description}}</p><hr>
+							<h5> Prerequisites: </h5><br>
+							<p>{{data.requirements}}</p><hr>
+								<form action="/add_to_cart", method="post">
+									{% csrf_token %}
+									<input type="hidden" name="item" value="{{data.id}}">
+									<input type="submit" class="btn btn-block btn-warning" value="Add to Cart" />
+								</form><br>
+
+						</div>
+						<br>
+
+						<div class="comment-top">
+							<h4>Reviews</h4><br>
+							<div class="media">
+								<a class="d-flex pr-3" href="#">
+									<img src="/static/images/te2.jpg" alt="" class="img-fluid" />
+								</a>
+								<div class="media-body">
+									<h5 class="mt-0">Joseph Goh</h5>
+									<p>It was presented clearly and efficiently.
+										The courses thus far have built upon my programming
+										logic and has given me a good introduction into PLC and FBD
+										that is very necessary in my field of robotics integration. </p>
+								</div>
+							</div>
+							<hr>
+							<div class="media mt-3">
+								<a class="d-flex pr-3" href="#">
+									<img src="/static/images/te2.jpg" alt="" class="img-fluid" />
+								</a>
+								<div class="media-body">
+									<h5 class="mt-0">Richard Spark</h5>
+									<p>I just finished the course with no hassle. Mr. Hamsho
+										is a great instructor who leaves no stone unturned in ensuring
+										that you get the information you need about PLC. I am looking forward
+										to learning more from him about PLCs.</p>
+								</div>
+							</div>
+						</div>
+						<br><br>
+						<div class="comment-top">
+							<h4>Leave a Comment</h4><br>
+							<div class="comment-bottom">
+								<form action="#" method="post">
+									<div class="form-group">
+										<input class="form-control" type="text" name="Name" placeholder="Name"
+											required="">
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="email" name="Email" placeholder="Email"
+											required="">
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="text" name="Subject" placeholder="Subject"
+											required="">
+									</div>
+									<div class="form-group">
+										<textarea class="form-control" name="Message" placeholder="Message..."
+											required=""></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary submit">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- //left side -->
+					<!-- right side -->
+					<aside class="col-lg-4 right-blog-con text-right mt-lg-0 mt-5">
+						<div class="right-blog-info text-left">
+							<div class="tech-btm">
+
+								{% endfor %}
+							</div>
+							<div class="category-story tech-btm"><br>
+
+
+							<div class="tech-btm">
+								<h4>Similar Courses</h4><hr>
+								{% for data in course_details_all %}
+								<div class="blog-grids row mb-3">
+									<div class="col-md-5 blog-grid-left">
+										<a href="single.html">
+											<img src="{{data.image}}" class="img-fluid" alt="">
+										</a>
+									</div>
+									<div class="col-md-7 blog-grid-right mt-2">
+										<h5>
+											<a href="single.html">{{data.description}}
+											</a>
+										</h5>
+										<div class="sub-meta">
+											<span>
+												<i class="far fa-clock"></i>{{data.date_created}}</span>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							<br>
+							<h4>More Courses</h4><hr>
+							<ul class="list-unstyled">
+									<li class="border-bottom mb-3 pb-3">
+										<i class="fa fa-angle-right mr-2"></i>
+										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
+											et
+											dolore magna aliqua</a>
+									</li>
+									<li class="border-bottom mb-3 pb-3">
+										<i class="fa fa-angle-right mr-2"></i>
+										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
+											et
+											dolore magna aliqua</a>
+									</li>
+									<li class="border-bottom mb-3 pb-3">
+										<i class="fa fa-angle-right mr-2"></i>
+										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
+											et
+											dolore magna aliqua</a>
+									</li>
+									<li class="border-bottom mb-3 pb-3">
+										<i class="fa fa-angle-right mr-2"></i>
+										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
+											et
+											dolore magna aliqua</a>
+									</li>
+									<li class="border-bottom mb-3 pb-3">
+										<i class="fa fa-angle-right mr-2"></i>
+										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
+											et
+											dolore magna aliqua</a>
+									</li>
+									<li>
+										<i class="fa fa-angle-right mr-2"></i>
+										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
+											et
+											dolore magna aliqua</a>
+									</li>
+								</ul>
+							</div>
+							<hr>
+							<div class="tech-btm"><br>
+								<h4>Categories</h4><hr>
+								<ul class="list-group single">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										Cras justo odio
+										<span class="badge badge-primary badge-pill">14</span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										Dapibus ac facilisis in
+										<span class="badge badge-primary badge-pill">2</span>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										Morbi leo risus
+										<span class="badge badge-primary badge-pill">1</span>
+									</li>
+								</ul>
+							</div>
+							<br>
+							<div class="single-gd tech-btm">
+								<h4>Other Courses By{{ data.instructor}}</h4>
+								<div class="blog-grids">
+									<div class="blog-grid-left">
+										<a href="single.html">
+											<img src="/static/images/blog1.png" class="img-fluid" alt="">
+										</a>
+									</div>
+									<div class="blog-grid-right">
+										<h5 class="mt-0">
+											<a href="single.html">Pellentesque dui, non felis. Maecenas male</a>
+										</h5>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>
+						</div>
+					</aside>
+					<!-- //right side -->
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

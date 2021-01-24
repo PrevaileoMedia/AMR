@@ -1,0 +1,64 @@
+{% extends 'accounts/base.html'%}
+{% block content %}
+{% load static %}
+
+<br><br><br><br><br><br><br>
+	<div class="fh5co-hero">
+		<div class="fh5co-listing">
+			<div class="container">
+				<div class="row">
+					{% for data in course_details_qs %}
+					<div class="col-md-4 col-sm-4">
+						<a class="fh5co-listing-item" href="">
+							{{data.image}}
+							<img src="/{{data.image}}" alt="Training Yard" class="img-responsive">
+							<div class="fh5co-listing-copy">
+								<h2>{{data.subcategory}}</h2>
+								<span class="icon">
+									<i class="fas fa-shopping-cart"></i>
+								</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-8">
+								<h2>{{data.subcategory}}</h2>
+								<hr>
+								<p>{{data.description}}</p>
+								<form action="/add_to_cart", method="post">
+									{% csrf_token %}
+									<input type="text" name="item" value="{{data.id}}">
+									<input type="submit" class="btn btn-warning" value="Add to Cart" />
+								</form>
+								<p>{{data.level}}</p>
+								<p>{{data.requirements}}</p>
+					</div>
+
+
+					{% endfor %}
+				</div>
+				<hr>
+				<div class="row">
+					<h3>Instructor Details</h3>
+					{% for data in seller_qs %}
+					<div class="col-md-4">
+						<div class="card" style="width:300px">
+						<div class="card-body">
+						  <h4 class="card-title">{{data.name}}</h4>
+						  <p class="card-text">{{data.company}}</p>
+						  <p class="card-text">{{data.designation}}</p>
+						</div>
+						<img class="card-img-top" src="{{data.profile_pic}}" alt="Card image" style="width:100%">
+					  </div>
+					</div>
+					<div class="col-md-8">
+						<h4 class="card-title">{{data.about}}</h4>
+					</div>
+
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+</div>
+{% endblock %}
+
+

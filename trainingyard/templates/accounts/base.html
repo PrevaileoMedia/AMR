@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+	<title>Training Yard | /home :: Training Yard</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Training Yard" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
+</head>
+
+<body>
+	<div class="main-top py-1">
+		<div class="container">
+			<div class="nav-content">
+				<h1>
+					<a id="logo" class="logo" href="/">
+						<img src="/static/images/logo.png" alt="" class="img-fluid">Training <span>Yard</span>
+					</a>
+				</h1>
+				<div class="nav_web-dealingsls">
+						<nav>
+							<label for="drop" class="toggle">Menu</label>
+							<input type="checkbox" id="drop" />
+							<ul class="menu">
+								<li><a href="/">home</a></li>
+								<li><a href="/contact">Contact Us</a></li>
+								<li><a href="/subcategory/0">Courses</a></li>
+								{% if user.is_authenticated %}
+									<li><a href="/uprofile">My Profile</a></li>
+									<li><a href="/logout_view">Logout</a></li>
+								{%else%}
+									<li><a href="/login">Login</a></li>
+								{% endif %}
+							</ul>
+						</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //navigation -->
+
+{% block content %}
+{% endblock %}
+
+
+
+	<!-- copyright -->
+	<div class="cpy-right text-center py-3" style="bottom:0px;position:fixed;width:100%;">
+		<p>© 2021 Training Yard. All rights reserved.
+		</p>
+	</div>
+	<!-- //copyright -->
+	<!-- move top icon -->
+	<a href="#" class="move-top text-center">
+		<span class="fa fa-level-up" aria-hidden="true"></span>
+	</a>
+	<!-- //move top icon -->
+
+</body>
+
+</html>

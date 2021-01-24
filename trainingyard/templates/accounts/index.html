@@ -1,0 +1,370 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{% block content %}
+	<!-- newsletter -->
+	<section class="subscribe-main py-5" style="background: url('static/images/back.jpg') 100% 0 no-repeat fixed;">
+		<div class="container py-xl-5 py-3">
+			<div class="row pb-lg-4 pt-lg-5">
+				<div class="col-lg-6 col-md-9 text-center">
+					<h3 class="w3ls-title mb-2">Learn Anything, Anywhere!!</h3>
+					<p class="mb-xl-5 mb-4" style="color: #606060;">Powered By Training Yard</p>
+					<form action="#" method="post" class="d-flex newsletter-info" autocomplete="off">
+						<div class="autocomplete" style="border:0 solid #fafafa; border-radius: 10px;width:60%;">
+							<input type="text" name="txtSearch" id="txtSearch"
+							   style="border:2px solid #fafafa;width:100%;height: 100%;"
+							   placeholder="&nbsp;Search Courses" />
+						</div>
+						<br>
+						&nbsp;<button type="submit">search</button>
+					</form>
+				</div>
+				<div id="display"></div>
+				<div class="col-lg-6 col-md-3">
+
+				</div>
+			</div>
+<!-- 			<img src="/static/images/sub.png" alt="" class="img-fluid sub-img">
+ -->		</div>
+	</section>
+	<!-- //newsletter -->
+
+
+
+	<div class="clearfix"></div>
+
+	<!-- specials -->
+	<section class="blog_w3ls py-5">
+		<div class="container pb-xl-5 pb-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<h3 class="w3ls-title">Trending <span>Courses</span></h3>
+			</div>
+			<div class="row">
+				{%for data in courses_qs%}
+				<div class="col-lg-4 col-md-6 mt-md-0 mt-5" style="padding-top:20px;">
+					<div class="card border-0 med-blog">
+						<div class="card-header p-0">
+							<a href="/subcategory/{{data.id}}">
+								<img class="card-img-bottom" src="{{data.image}}" alt="Training Yard" >
+							</a>
+						</div>
+						<div class="card-body border border-top-0">
+							<h5 class="blog-title card-title m-0"><a href="{% static 'courses.html">{{data.name}}</a></h5>
+							<p class="mt-3">{{data.description}}</p>
+							<a href="/subcategory/{{data.id}}" class="button-w3ls active mt-4 mb-3">View More
+								<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- //blog grid -->
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- //specials -->
+
+	<!-- two grids -->
+	<section class="offer pt-lg-3">
+		<div class="row no-gutters">
+			<div class="col-md-6 p-0">
+				<div class="blog-sec-w3">
+					<div class="text-blog-w3 text-center p-2">
+						<h4 class="text-wh mb-3"><a href="{% static 'courses.html">Best Fast Food Collection</a></h4>
+						<p class="text-li">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris Sed
+							ut perspiciatis
+							unde omnis iste natus error.</p>
+						<a href="{% static 'courses.html" class="button-w3ls active mt-5">Order Now
+							<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 p-0">
+				<div class="blog-sec-w3 blog-sec-w3-2">
+					<div class="text-blog-w3 text-center p-2">
+						<h4 class="text-wh mb-3"><a href="{% static 'courses.html">Organic Best & Fresh Food</a></h4>
+						<p class="text-li">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris Sed
+							ut perspiciatis
+							unde omnis iste natus error.</p>
+						<a href="{% static 'courses.html" class="button-w3ls active mt-5">Order Now
+							<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //two grids -->
+
+	<!-- services -->
+	<section class="middle py-5" id="services">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<p class="w3ls-title-sub">Our Work</p>
+				<h3 class="w3ls-title mb-3">Excellent <span>Services</span></h3>
+			</div>
+			<div class="row grids-w3 py-xl-5 py-lg-4 pt-lg-0 pt-4">
+				<div class="col-lg-5 w3pvt-lauits_banner_bottom_left">
+					<div class="row">
+						<div class="col-8 wthree_banner_bottom_grid_right text-right">
+							<h4 class="mb-3"><a href="/login">Free Shipping</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
+							<img src="/static/images/s1.png" alt="" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 w3pvt-lauits_banner_bottom_left">
+
+				</div>
+				<div class="col-lg-5 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
+					<div class="row">
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
+							<img src="/static/images/s2.png" alt="" class="img-fluid">
+						</div>
+						<div class="col-8 wthree_banner_bottom_grid_right">
+							<h4 class="mb-3"><a href="/login">Free & Easy Returns</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row grids-w3 py-xl-5 py-lg-4 mt-lg-0 mt-4">
+				<div class="col-lg-4 w3pvt-lauits_banner_bottom_left">
+					<div class="row">
+						<div class="col-8 wthree_banner_bottom_grid_right text-right pl-lg-0">
+							<h4 class="mb-3"><a href="/login">Online Order</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pr-lg-0">
+							<img src="/static/images/s3.png" alt="" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 w3pvt-lauits_banner_bottom_left pr-0">
+
+				</div>
+				<div class="col-lg-4 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
+					<div class="row">
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pl-lg-0">
+							<img src="/static/images/s4.png" alt="" class="img-fluid">
+						</div>
+						<div class="col-8 wthree_banner_bottom_grid_right pr-lg-0">
+							<h4 class="mb-3"><a href="/login">24/7 Support</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-blog-2">
+			<img src="/static/images/img.png" alt="" class="img-fluid">
+		</div>
+	</section>
+	<!-- //services -->
+
+	<!-- blog -->
+	<section class="blog_w3ls py-5" id="blog">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<p class="w3ls-title-sub">Posts</p>
+				<h3 class="w3ls-title mb-3">Our Latest <span>Blog</span></h3>
+				<p class="titile-para-text mx-auto">Inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicabo.Nemo
+					enim totam rem aperiam.</p>
+			</div>
+			<div class="row">
+				<!-- blog grid -->
+				<div class="col-lg-4 col-md-6">
+					<div class="card border-0">
+						<div class="card-header p-0">
+							<a href="{% static 'single.html">
+								<img src="/static/images/blog1.png" class="card-img-bottom img-fluid" alt="image">
+							</a>
+							<img src="/static/images/te1.jpg" alt="" class="img-blog rounded-circle img-fluid">
+						</div>
+						<div class="card-body text-center pt-5 mt-2">
+							<h5 class="blog-title card-title mb-2"><a href="{% static 'single.html">Sed ut Riciatis</a></h5>
+							<div class="blog_w3icon border-top border-bottom py-1 mb-3">
+								<span>
+									Magna Kictum - Nov 12</span>
+							</div>
+							<p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+							<a href="{% static 'single.html" class="button-w3ls mt-4">Read More
+								<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- //blog grid -->
+				<!-- blog grid -->
+				<div class="col-lg-4 col-md-6">
+					<div class="card border-0">
+						<div class="card-header p-0">
+							<a href="{% static 'single.html">
+								<img src="/static/images/blog2.png" class="card-img-bottom img-fluid" alt="image">
+							</a>
+							<img src="/static/images/te2.jpg" alt="" class="img-blog rounded-circle img-fluid">
+						</div>
+						<div class="card-body text-center pt-5 mt-2">
+							<h5 class="blog-title card-title mb-2"><a href="{% static 'single.html">Unde omnis iste</a></h5>
+							<div class="blog_w3icon border-top border-bottom py-1 mb-3">
+								<span>
+									Auris Jlan - Nov 15</span>
+							</div>
+							<p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+							<a href="{% static 'single.html" class="button-w3ls active mt-4">Read More
+								<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- //blog grid -->
+				<!-- blog grid -->
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+					<div class="card border-0">
+						<div class="card-header p-0">
+							<a href="{% static 'single.html">
+								<img src="/static/images/blog3.png" class="card-img-bottom img-fluid" alt="image">
+							</a>
+							<img src="/static/images/te3.jpg" alt="" class="img-blog rounded-circle img-fluid">
+						</div>
+						<div class="card-body text-center pt-5 mt-2">
+							<h5 class="blog-title card-title mb-2"><a href="{% static 'single.html">Natus error sit</a></h5>
+							<div class="blog_w3icon border-top border-bottom py-1 mb-3">
+								<span>
+									Dictum Orta - Nov 20</span>
+							</div>
+							<p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+							<a href="{% static 'single.html" class="button-w3ls mt-4">Read More
+								<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- //blog grid -->
+			</div>
+		</div>
+	</section>
+
+
+
+<script type="text/javascript">
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.style.backgroundColor = "white";
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+var outputdata = []
+$(document).ready(function(){
+   	$.ajax({
+        url: '/ajax_autocomplete',
+        dataType: 'json',
+	    success: function (result) {
+	    	results = result[0].fields.name
+			$.each(result, function(i) {
+		        outputdata.push(result[i].fields.name)
+		    });
+		  }
+		});
+})
+
+autocomplete(document.getElementById("txtSearch"), outputdata);
+
+
+</script>
+{% endblock %}

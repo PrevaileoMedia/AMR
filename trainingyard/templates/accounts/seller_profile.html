@@ -1,0 +1,65 @@
+{% extends 'accounts/base.html'%}
+{% block content %}
+{% load static %}
+<hr>
+<div class="sidenav">
+  <a class="sidenavli active" href="#home">Pofile</a>
+  <li class="sidenavli" href="#news">Courses</li>
+	{% for data in course_details_qs %}
+	    <a class="sidenava" href="#course-{{data.id}}">Home1</a>
+	%}
+</div>
+
+<div class="main">
+		<div class="row">
+			<div class="" style="background-color:#fafafa">
+				<form action="" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<span>Name</span><input type="text" class="form-control" value="{{seller_qs.name}}" name="name"/>
+						<span>Phone</span><input type="text" class="form-control" value="{{seller_qs.phone}}" name="phone"/><br>
+						<span>Email</span><input type="text" class="form-control" value="{{seller_qs.email}}" name="email"/><br>
+						<span>Company</span><input type="text" class="form-control" value="{{seller_qs.company}}" name="company"/><br>
+						<span>About</span>
+						<textarea class="form-control" class="form-control" rows="5" name="about" id="about">
+						{{seller_qs.about}}
+						</textarea><br>
+						<img class="card-img-top" src="{{data.profile_pic}}" alt="profile_pic" style="width:100%"><br>
+						<input type="file" class="form-control-file" id="exampleFormControlFile1" name="profile_pic"><br>
+						<center>
+							<input type="submit" class="btn btn-warning " value="Update Profile">
+						</center>
+					</div>
+					<br>
+				</form>
+			</div>
+		</div>
+</div>
+
+	<div class="col-md-8">
+		{% for data in course_details_qs %}
+		<div class="row" style="background-color:#f0f0f0;" id="course-{{data.id}}">
+			<div class="col-md-6" >	<br>
+				<img src="/{{data.image}}" alt="Training Yard" class="col-md-12 col-sm-4">
+				<p style="text-align:justify;color:black;margin-top:10px;">{{data.description}}</p>
+			</div>
+			<div class="col-md-6"><br>
+				<div class="fh5co-listing-copy"> <h2>{{data.name}}</h2> </div>
+				<h2>{{data.subcategory}}</h2><hr>
+				<p><span style="color:#000;">Online/Offline: </span>{{data.courseAvailability}}</p><hr>
+				<p><span style="color:#000;">Price: </span>{{data.price}}</p><hr>
+				<p><span style="color:#000;">Level: </span>{{data.level}}</p><hr>
+				<p><span style="color:#000;">Prerequisites: </span>{{data.requirements}}</p><hr>
+				<a href="/editCourse/{{data.id}}"><p style="color:red;float:right;"> Edit <span class="glyphicon">&#x270f;</span></p></a>
+			</div>
+		</div>
+		<hr>
+		{% endfor %}
+	</div>
+
+
+<script>
+  alert(document.querySelector('[id^="course-"]').id)
+</script>
+
+{% endblock %}
