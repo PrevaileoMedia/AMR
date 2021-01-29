@@ -26,8 +26,7 @@ SECRET_KEY = 'u*l47a&skvhf3!x=6w5)$7&916ouwb3)mg@2tz2ra5nvpu433o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -40,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'trainingyard',
-    'crispy_forms'
+    'crispy_forms',
+    'star_ratings'
 
 ]
 

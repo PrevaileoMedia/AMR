@@ -8,7 +8,6 @@
 			<div class="title-section text-center mb-md-5 mb-4">
 				<h3 class="w3ls-title">Course <span>Details</span></h3>
 			</div>
-			<hr>
 			<div class="inner-sec">
 				<div class="row">
 					{% for data in course_details_qs %}
@@ -21,21 +20,20 @@
 									</a>
 								</div>
 							</div>
-
+							<br>
 							<h3>
 								{{data.name}}
-							</h3><br>
+							</h3><hr>
 							<p style="float:left;">Trainer: <span style="color:#000">{{seller_qs.name}}</span></p>
 							<p style="float:right;">Level: <span style="color:#000">{{data.level}}</span></p><br><hr><br>
 							<p>{{data.description}}</p><hr>
 							<h5> Prerequisites: </h5><br>
 							<p>{{data.requirements}}</p><hr>
-								<form action="/add_to_cart", method="post">
+								<form action="../add_to_cart/", method="post">
 									{% csrf_token %}
-									<input type="hidden" name="item" value="{{data.id}}">
+									<input type="hidden" name="item" value="{{course_id}}">
 									<input type="submit" class="btn btn-block btn-warning" value="Add to Cart" />
 								</form><br>
-
 						</div>
 						<br>
 
@@ -98,7 +96,6 @@
 					<aside class="col-lg-4 right-blog-con text-right mt-lg-0 mt-5">
 						<div class="right-blog-info text-left">
 							<div class="tech-btm">
-
 								{% endfor %}
 							</div>
 							<div class="category-story tech-btm"><br>
@@ -108,12 +105,7 @@
 								<h4>Similar Courses</h4><hr>
 								{% for data in course_details_all %}
 								<div class="blog-grids row mb-3">
-									<div class="col-md-5 blog-grid-left">
-										<a href="single.html">
-											<img src="{{data.image}}" class="img-fluid" alt="">
-										</a>
-									</div>
-									<div class="col-md-7 blog-grid-right mt-2">
+									<div class="col-md-12">
 										<h5>
 											<a href="single.html">{{data.description}}
 											</a>
@@ -126,80 +118,37 @@
 								</div>
 								{% endfor %}
 							<br>
-							<h4>More Courses</h4><hr>
-							<ul class="list-unstyled">
-									<li class="border-bottom mb-3 pb-3">
-										<i class="fa fa-angle-right mr-2"></i>
-										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
-											et
-											dolore magna aliqua</a>
-									</li>
-									<li class="border-bottom mb-3 pb-3">
-										<i class="fa fa-angle-right mr-2"></i>
-										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
-											et
-											dolore magna aliqua</a>
-									</li>
-									<li class="border-bottom mb-3 pb-3">
-										<i class="fa fa-angle-right mr-2"></i>
-										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
-											et
-											dolore magna aliqua</a>
-									</li>
-									<li class="border-bottom mb-3 pb-3">
-										<i class="fa fa-angle-right mr-2"></i>
-										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
-											et
-											dolore magna aliqua</a>
-									</li>
-									<li class="border-bottom mb-3 pb-3">
-										<i class="fa fa-angle-right mr-2"></i>
-										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
-											et
-											dolore magna aliqua</a>
-									</li>
-									<li>
-										<i class="fa fa-angle-right mr-2"></i>
-										<a href="#" class="text-blog-single">sed do eiusmod tempor incididunt ut labore
-											et
-											dolore magna aliqua</a>
-									</li>
-								</ul>
-							</div>
 							<hr>
 							<div class="tech-btm"><br>
-								<h4>Categories</h4><hr>
+								<h4>Categories</h4><br>
 								<ul class="list-group single">
+									{% for mykey, myvalue in categories.items %}
 									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Cras justo odio
-										<span class="badge badge-primary badge-pill">14</span>
+										{{mykey}}
+										<span class="badge badge-primary badge-pill">{{myvalue}}</span>
 									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Dapibus ac facilisis in
-										<span class="badge badge-primary badge-pill">2</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Morbi leo risus
-										<span class="badge badge-primary badge-pill">1</span>
-									</li>
+									{% endfor %}
 								</ul>
 							</div>
 							<br>
 							<div class="single-gd tech-btm">
-								<h4>Other Courses By{{ data.instructor}}</h4>
-								<div class="blog-grids">
-									<div class="blog-grid-left">
-										<a href="single.html">
-											<img src="/static/images/blog1.png" class="img-fluid" alt="">
-										</a>
-									</div>
-									<div class="blog-grid-right">
-										<h5 class="mt-0">
-											<a href="single.html">Pellentesque dui, non felis. Maecenas male</a>
-										</h5>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
+								<h4>Other Courses By : {{ seller_qs.name}}</h4><br>
+								{% for data in course_details_all %}
+									<div class="blog-grids">
+										<div class="blog-grid-left">
+											<a href="single.html">
+												<img src="/{{data.image}}" class="img-fluid" alt="">
+											</a>
+										</div>
+										<div class="blog-grid-right">
+											<br><h5 class="mt-0">
+												<a href="single.html">{{data.name}}</a>
+											</h5>
+											<p>{{data.description}}</p>
+										</div>
+										<div class="clearfix"> </div>
+									</div><hr>
+								{% endfor %}
 							</div>
 						</div>
 					</aside>

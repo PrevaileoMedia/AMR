@@ -1,27 +1,23 @@
 {% extends 'accounts/base.html'%}
 {% block content %}
 {% load static %}
-
-<hr>
 <div class="container">
 	<div class="col-md-12">
-		{% for data in user1 %}
-		<h3>{{ data.name }}</h3><br>
-		{{ data.email }}<br>
-		{{ data.phone }}<br>
-		{% endfor %}
-	<hr>
-			<div class="title-section text-center mb-md-5 mb-4">
+		<h3>{{ user.name }}</h3><br>
+		{{ user.email }}<br>
+		{{ user.phone }}<br>
+	</div>
+			<div class="text-center ">
 				<h3 class="w3ls-title">My <span>Courses</span></h3>
 			</div>
 		<div class="row mt-4">
 		{% for course in course_details %}
 				<div class="col-md-4">
-					<div class="gallery-demo">
+					<div class="gallery-demo" style="padding:10px;">
 						<a href="#gal{{data.id}}">
-							<img class="card-img-bottom" src="/{{data.items.product.image}}" />
-							<h4 class="p-mask">{{data.name}}</h4>
-							{{ course.name }} -
+							<img class="card-img-bottom" src="/{{data.image}}" />
+							<h3>{{ course.name }}</h3>
+							<hr>
 							{{ course.subCategory }}<br>
 							Price: {{ course.price }} INR <br>
 							Level: {{ course.level }}<br>
@@ -33,6 +29,8 @@
 
 		{% endfor %}
 	</div>
+	<br><br><br>
+	<br><br><br>
 	<br><br><br>
 </div>
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{% block content %}
+	<div class="clearfix"></div>
+	<!-- specials -->
+	<section class="blog_w3ls py-5">
+		<div class="container pb-xl-5 pb-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<h3 class="w3ls-title">All <span>Courses</span></h3>
+			</div>
+			<div class="row">
+				{%for data in courses_qs%}
+				<div class="col-lg-4 col-md-6 mt-md-0 mt-5" style="padding-top:20px;">
+					<div class="card border-0 med-blog">
+						<div class="card-header p-0">
+							<a href="/subcategory/{{data.id}}">
+								<img class="card-img-bottom" src="/{{data.image}}" alt="Training Yard" >
+							</a>
+						</div>
+						<div class="card-body border border-top-0">
+							<h5 class="blog-title card-title m-0"><a href="{% static 'courses.html">{{data.name}}</a></h5>
+							<p class="mt-3">{{data.description}}</p>
+							<a href="/subcategory/{{data.id}}" class="button-w3ls active mt-4 mb-3">View More
+								<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- //blog grid -->
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- //specials -->
+{% endblock %}

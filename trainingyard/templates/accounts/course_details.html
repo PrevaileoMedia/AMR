@@ -20,11 +20,13 @@
 							</div>
 						</a>
 					</div>
+					{% ratings object %}
+
 					<div class="col-md-8">
 								<h2>{{data.subcategory}}</h2>
 								<hr>
 								<p>{{data.description}}</p>
-								<form action="/add_to_cart", method="post">
+								<form action="add_to_cart/", method="post">
 									{% csrf_token %}
 									<input type="text" name="item" value="{{data.id}}">
 									<input type="submit" class="btn btn-warning" value="Add to Cart" />

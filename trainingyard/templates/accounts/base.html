@@ -16,9 +16,11 @@
 		}
 	</script>
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{% static 'css/carousal_style.css' %}" type="text/css" media="all" />
 	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+	<link href="{% static 'css/owl-carousel.css' %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
@@ -40,13 +42,16 @@
 							<input type="checkbox" id="drop" />
 							<ul class="menu">
 								<li><a href="/">home</a></li>
-								<li><a href="/contact">Contact Us</a></li>
+								<li><a href="/contact/">Contact Us</a></li>
 								<li><a href="/subcategory/0">Courses</a></li>
-								{% if user.is_authenticated %}
-									<li><a href="/uprofile">My Profile</a></li>
-									<li><a href="/logout_view">Logout</a></li>
+								{% if group == "customer" %}
+									<li><a href="/uprofile/">My Profile</a></li>
+									<li><a href="/logout_view/">Logout</a></li>
+								{% elif group == "seller" %}
+									<li><a href="/sprofile/">My Profile</a></li>
+									<li><a href="/logout_view/">Logout</a></li>
 								{%else%}
-									<li><a href="/login">Login</a></li>
+									<li><a href="/login/">Login</a></li>
 								{% endif %}
 							</ul>
 						</nav>
@@ -73,6 +78,22 @@
 	</a>
 	<!-- //move top icon -->
 
+
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
+	<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			$("#owl-demo").owlCarousel({
+
+				autoPlay: 3000, //Set AutoPlay to 3 seconds
+				autoPlay: true,
+				items: 3,
+				itemsDesktop: [991, 2],
+				itemsDesktopSmall: [414, 4]
+
+			});
+		});
+	</script>
 </body>
 
 </html>

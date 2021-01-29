@@ -6,26 +6,34 @@
 		<div class="container py-xl-5 py-lg-3">
 			<div class="title-section text-center mb-md-5 mb-4">
 				<h3 class="w3ls-title mb-3"><span>{{category}} </span></h3>
-				<p class="titile-para-text mx-auto"></p>
+				<p class="title-para-text mx-auto"></p>
 			</div>
-			<div class="row mt-4">
-				{% for data in subcategory_qs %}
-				<div class="col-md-4">
-					<div class="gallery-demo">
-						<a href="#gal{{data.id}}">
-							<img class="card-img-bottom" src="/{{data.image}}" />
-							<h4 class="p-mask">{{data.name}}</h4>
-						</a>
-					</div>
-				</div>
+			{% for sub in subcategoryNames_qs %}
+			<h4> {{sub.name}} </h4>
+			<hr>
+			<div class="row">
+				{% for data in subcategory_qs%}
+					{% if sub.id == data.subCategory.id %}
+						<div class="col-md-4">
+							<div class="gallery-demo">
+								<a href="#gal{{data.id}}">
+									<img class="card-img-bottom" src="/{{data.image}}" />
+									<h4 class="p-mask">{{data.name}}</h4>
+								</a>
+							</div>
+						</div>
+					{% endif %}
 				{% endfor %}
-			</div>
+			</div><br><br>
+			{% endfor %}
+
 
 			{% for data in subcategory_qs %}
 			<div id="gal{{data.id}}" class="pop-overlay">
 				<div class="popup">
 					<img class="card-img-bottom" src="/{{data.image}}" alt="" >
 					<h4 class="p-mask">{{data.name}}</h4>
+					<p style="text-align:justified;">{{data.description}}</p>
 					<a href="/details/{{data.id}}" class="button-w3ls active mt-3">Order Now
 						<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
 					</a>

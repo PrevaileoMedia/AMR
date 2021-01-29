@@ -1,8 +1,11 @@
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 
 
 # Create your models here.
+from star_ratings.models import Rating
+
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -80,12 +83,14 @@ class Course(models.Model):
     requirements = models.TextField(null=True)
     tags = models.ManyToManyField(Tag)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+    ratings = GenericRelation(Rating, related_query_name='foos')
 
     def __str__(self):
         return self.name
 
     class Meta:
         db_table = "Course"
+
 
 
 class SellerCourses(models.Model):
@@ -139,3 +144,13 @@ class Transaction(models.Model):
     class Meta:
         ordering = ['-timestamp']
 
+
+class Comments(models.Model):
+    blogpost_connected = models.ForeignKey(
+        Course, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+
+    def __str__(self):
+        return str(self.author) + ', ' + self.blogpost_connected.title[:40]

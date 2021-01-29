@@ -1,4 +1,4 @@
-{% extends 'registration/base.html'%}
+{% extends 'accounts/base.html'%}
 {% load static %}
 {% block content %}
 <hr>
@@ -25,12 +25,12 @@
 						</p>
 						<p class="account-w3ls text-center text-da">
 							Don't have an account?
-							<a href="/register">Create one now</a>
+							<a href="/register/">Create one now</a>
 						</p>
 					</form>
 					{% for message in messages|slice:"-1:" %}
-					<p id="messages">{{message}}</p>
-				{% endfor %}
+						<p style="color:red;text-align:center;" id="messages">{{message}}</p>
+					{% endfor %}
 				</div>
 			</div>
 		</div>

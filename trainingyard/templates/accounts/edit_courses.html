@@ -1,23 +1,39 @@
 {% extends 'accounts/base.html'%}
 {% block content %}
 {% load static %}
-<hr>
-<div class="sidenav">
-  <a class="sidenavli active" href="#home">Pofile</a>
-  <li class="sidenavli" href="#news">Courses</li>
-    <a class="sidenava" href="#home">Home1</a>
-    <a class="sidenava" href="#home">Home1</a>
-    <a class="sidenava" href="#home">Home1</a>
-</div>
-
+<br>
 <div class="main">
-  <h2>Responsive Sidebar Example</h2>
-  <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
-  <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
-  <h3>Resize the browser window to see the effect.</h3>
-</div>
+		<div class="row">
+          <div class="col-md-2" style="background-color:#fff;">
+              <a class="sidenavli active" href="/sprofile/" onclick="myFunction('course-0')">Profile</a>
+          </div>
 
-</script>
+		 <div class="col-md-9" style="background-color:#fafafa"><br>
+				<form action="../sprofile/" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="form-group">
+						<h2>{{data.name}}</h2> <hr>
+						<input type="hidden" class="form-control"  name="id" value="{{data.id}}">
+						<span style="color:#000;">Name: </span>
+							<input type="text" class="form-control"  name="name" value="{{data.name}}">
+						<span style="color:#000;">category: </span>
+							<input type="text" class="form-control"  name="category" value="{{data.subCategory}}">
+						<span style="color:#000;">courseAvailability: </span>
+							<input type="text" class="form-control"  name="courseAvailability" value="{{data.courseAvailability}}">
+						<span style="color:#000;">price: </span><input type="text" class="form-control"  name="price" value="{{data.price}}">
+						<span style="color:#000;">level: </span><input type="text" class="form-control"  name="level" value="{{data.level}}">
+						<span style="color:#000;">Prerequisites: </span><input type="text" class="form-control"  name="requirements" value="{{data.requirements}}">
+						<span style="color:#000;">description: </span>
+
+						<textarea class="form-control"  name="description" >{{data.description}}</textarea>
+						<br>
+						<input type="file" name="image" />
+						<br><br>
+						<center> <input type="submit" name="edit_course" class="btn btn-warning " value="Update Course"> </center>
+					</div>
+				</form>
+			</div>
+		</div>
 {% endblock %}
 
 
